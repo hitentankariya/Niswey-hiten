@@ -1,0 +1,20 @@
+@extends('layouts.app')
+
+@section('content')
+    <h1>Edit Contact</h1>
+
+    <form action="{{ route('contacts.update', $contact->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $contact->name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ $contact->phone }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{{ route('contacts.index') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+@endsection
